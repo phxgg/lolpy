@@ -17,7 +17,7 @@ def main():
 	riot = RiotCall(league_client)
 
 	current_summoner = lcu.get_current_summoner()
-	print('Connected: ' + current_summoner['displayName'])
+	print(f'Connected: {current_summoner["displayName"]}')
 
 	print(f'LCU: https://127.0.0.1:{league_client.get_lcu_port()}')
 	print(f'Riot: https://127.0.0.1:{league_client.get_riot_port()}')
