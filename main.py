@@ -127,9 +127,9 @@ def main():
     print(f'Summoner ID: {r["summonerId"]}')
     print(f'Puuid: {r["puuid"]}')
 
-	# Reporting the player more than once will return an error: "Account was already reported."
-	# However, if you logout and login again, you can report the same player again.
-	# Also it seems like we can use any random number for the gameId.
+    # Reporting the player more than once will return an error: "Account was already reported."
+    # However, if you logout and login again, you can report the same player again.
+    # Also it seems like we can use any random number for the gameId.
     for i in range(2):
       r = requests.post(lcu_api + '/lol-end-of-game/v2/player-complaints', headers=lcu_headers, verify=False, data=json.dumps({
           "comment": "",
