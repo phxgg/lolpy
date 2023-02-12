@@ -28,7 +28,7 @@ def main():
 	print(f'Summoner ID: {victim["summonerId"]}')
 
 	# Reporting the player more than once will return an error: "Account was already reported."
-	# However, if you logout and login again, you can report the same player again.
+	# However, if you logout and login again, you can report the same player again (?).
 	# Also it seems like we can use any random number for the gameId.
 	for i in range(2):
 		GAME_ID = random.randint(3000000000, 3313105043)
