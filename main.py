@@ -5,7 +5,6 @@ import json
 from classes.league_client import LeagueClient
 from classes.lcu_call import LCUCall
 from classes.riot_call import RiotCall
-from classes.webreq import WebReq
 
 # suppress warnings
 # requests.packages.urllib3.disable_warnings()
@@ -28,11 +27,6 @@ def main():
 
     print(f'Name: {victim["displayName"]}')
     print(f'Summoner ID: {victim["summonerId"]}')
-
-    # testing code
-
-    access_token = ''
-    webreq = WebReq(access_token=access_token)
 
 
 if __name__ == '__main__':
