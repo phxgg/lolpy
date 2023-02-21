@@ -55,13 +55,16 @@ class LeagueClient():
                     if '--region=' in a:
                         self._region = a.split('--region=', 1)[1].lower()
                     if '--remoting-auth-token=' in a:
-                        self._lcu_token = a.split('--remoting-auth-token=', 1)[1]
+                        self._lcu_token = a.split(
+                            '--remoting-auth-token=', 1)[1]
                     if '--app-port' in a:
                         self._lcu_port = a.split('--app-port=', 1)[1]
                     if '--riotclient-auth-token=' in a:
-                        self._riot_token = a.split('--riotclient-auth-token=', 1)[1]
+                        self._riot_token = a.split(
+                            '--riotclient-auth-token=', 1)[1]
                     if '--riotclient-app-port=' in a:
-                        self._riot_port = a.split('--riotclient-app-port=', 1)[1]
+                        self._riot_port = a.split(
+                            '--riotclient-app-port=', 1)[1]
 
     def set_sessions(self) -> None:
         '''

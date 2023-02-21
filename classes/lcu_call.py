@@ -27,22 +27,34 @@ class LCUCall:
     def get(self, path: str) -> str:
         r = requests.get(f'{self._url}{path}',
                          headers=self._headers, verify=False)
-        return json.loads(r.text)
+        try:
+            return r.json()
+        except Exception as e:
+            return r.text
 
     def post(self, path: str, data: str) -> str:
         r = requests.post(f'{self._url}{path}',
                           headers=self._headers, data=data, verify=False)
-        return json.loads(r.text)
+        try:
+            return r.json()
+        except Exception as e:
+            return r.text
 
     def put(self, path: str, data: str) -> str:
         r = requests.put(f'{self._url}{path}',
                          headers=self._headers, data=data, verify=False)
-        return json.loads(r.text)
+        try:
+            return r.json()
+        except Exception as e:
+            return r.text
 
     def delete(self, path: str) -> str:
         r = requests.delete(f'{self._url}{path}',
                             headers=self._headers, verify=False)
-        return json.loads(r.text)
+        try:
+            return r.json()
+        except Exception as e:
+            return r.text
 
     def get_current_summoner(self) -> str:
         '''
@@ -56,8 +68,14 @@ class LCUCall:
         '''
         return self.get(f'/lol-summoner/v1/summoners?name={requests.utils.quote(summoner_name)}')
 
-    def send_report(self, data) -> str:
+    def get_summoner_by_id(self, summoner_id: int) -> str:
         '''
-        Send report to summoner.
+        Get summoner information by summoner id.
         '''
-        return self.post(f'/lol-end-of-game/v2/player-complaints', data=data)
+        return self.get(f'/lol-summoner/v1/summoners/{str(summoner_id)}')
+
+    def invoke(self, service, method, args) -> str:
+        '''
+        Invoke an action.
+        '''
+        return self.post(f'/lol-login/v1/session/invoke?destination={service}&method={method}&args={json.dumps(args)}', data={})

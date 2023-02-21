@@ -5,6 +5,7 @@ class WebReq:
     '''
     Used to perform HTTP requests to Riot's actual API.
     '''
+
     def __init__(self, content_type: str, accept: str, access_token: str, user_agent: str) -> None:
         if not access_token:
             raise ValueError('access_token is required')
